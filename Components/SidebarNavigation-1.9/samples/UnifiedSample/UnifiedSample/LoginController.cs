@@ -72,7 +72,7 @@ namespace Sample
 			{
 			Console.WriteLine("sending login information");
 			//LoginResponse result = docdb.login(username.Text, password.Text);
-			LoginResponse result = aspdocdb.login(username.Text, password.Text);
+			LoginResponse result = aspcloudant.login(username.Text, password.Text);
 
 			if (result.status.Equals("success"))
 			{

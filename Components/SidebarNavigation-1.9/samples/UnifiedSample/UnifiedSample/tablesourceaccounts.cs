@@ -32,7 +32,7 @@ namespace UnifiedSample
 				cell = new UITableViewCell(UITableViewCellStyle.Value1, CellIdentifier); 
 			}
 
-			cell.TextLabel.Text = item.accountname;
+			cell.TextLabel.Text = item.name;
 			cell.DetailTextLabel.Text = item.balance.ToString("C");
 			return cell;
 		}

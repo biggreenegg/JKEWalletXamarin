@@ -3,8 +3,8 @@ namespace UnifiedSample
 {
 	public class Account
 	{
-		public string accountname;
-		public string accounttype;
+		public string name;
+		public string type;
 		public float balance;
 	}
 }

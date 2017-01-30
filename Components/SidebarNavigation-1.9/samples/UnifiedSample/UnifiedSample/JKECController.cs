@@ -30,8 +30,8 @@ namespace UnifiedSample
 
 			for (int j = 0; j < myaccounts.Length; j++)
 			{
-				if (Accounts.IndexOf(myaccounts[j].accountname) == -1)
-					Accounts.Add(myaccounts[j].accountname);
+				if (Accounts.IndexOf(myaccounts[j].name) == -1)
+					Accounts.Add(myaccounts[j].name);
 			}
 
 			//String[] payees = docdb.getpayees();
