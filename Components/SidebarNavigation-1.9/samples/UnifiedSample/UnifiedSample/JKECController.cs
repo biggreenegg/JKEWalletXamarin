@@ -8,8 +8,8 @@ using SidebarNavigation;
 
 namespace UnifiedSample
 {
-    public partial class JKECController : UITableViewController
-    {
+	public partial class JKECController : UITableViewController
+	{
 		private IList<string> Accounts = new List<string>();
 
 		private IList<string> Payees = new List<string>();
@@ -17,10 +17,10 @@ namespace UnifiedSample
 		private nint payeetype = 0;
 
 
-		public JKECController (IntPtr handle) : base (handle)
-        {
-			
-        }
+		public JKECController(IntPtr handle) : base(handle)
+		{
+
+		}
 
 		public override void ViewWillAppear(bool animated)
 		{
@@ -72,42 +72,52 @@ namespace UnifiedSample
 					};
 
 				}
-					menubutton.TouchUpInside += (sender, e) =>
-					{
-						SidebarNavigation.SidebarController mycontroller = (UIApplication.SharedApplication.Delegate as AppDelegate).RootViewController.SidebarController;
-						mycontroller.ToggleMenu();
-					};
-					savecheck.TouchUpInside += (sender, e) =>
-					{
+				menubutton.TouchUpInside += (sender, e) =>
+				{
+					SidebarNavigation.SidebarController mycontroller = (UIApplication.SharedApplication.Delegate as AppDelegate).RootViewController.SidebarController;
+					mycontroller.ToggleMenu();
+				};
+				savecheck.TouchUpInside += (sender, e) =>
+				{
 
-						Check myCheck = new Check();
-						myCheck.name = this.chooseaccount.Model.GetTitle(this.chooseaccount, this.chooseaccount.SelectedRowInComponent(0), 0);
-						myCheck.amount = Convert.ToDecimal(this.amountentered.Text);
-						DateTime checkdate = Convert.ToDateTime((string)this.dateentered.Text);
-						DateTime epoch = new DateTime(1970, 1, 1);
-						TimeSpan epochTimeSpan = checkdate - epoch;
-						myCheck.date = (int)epochTimeSpan.TotalSeconds;
-						myCheck.desc = (string)this.descriptionentered.Text;
-						if (payeetype == 0)
-							myCheck.payee = (string)this.payeeentered.Text;
-						else
-							myCheck.payee = (string)this.choosepayee.Model.GetTitle(this.choosepayee, this.choosepayee.SelectedRowInComponent(0), 0);
-						myCheck.username = "knizami";
+					Check myCheck = new Check();
+					myCheck.name = this.chooseaccount.Model.GetTitle(this.chooseaccount, this.chooseaccount.SelectedRowInComponent(0), 0);
+					myCheck.amount = Convert.ToDecimal(this.amountentered.Text);
+					DateTime checkdate = Convert.ToDateTime((string)this.dateentered.Text);
+					DateTime epoch = new DateTime(1970, 1, 1);
+					TimeSpan epochTimeSpan = checkdate - epoch;
+					myCheck.date = (int)epochTimeSpan.TotalSeconds;
+					myCheck.desc = (string)this.descriptionentered.Text;
+					if (payeetype == 0)
+						myCheck.payee = (string)this.payeeentered.Text;
+					else
+						myCheck.payee = (string)this.choosepayee.Model.GetTitle(this.choosepayee, this.choosepayee.SelectedRowInComponent(0), 0);
+					//myCheck.username = "knizami";
 					//var result = docdb.savecheck(myCheck);
-					var result = aspdocdb.savecheck(myCheck);
-						Console.WriteLine("sending check information with account type: " + myCheck.name);
-						if (result)
-						{
-							Console.WriteLine("Check Saved");
-						//SidebarController.ChangeContentView(new AccountsController());
+					CloudantCreateResponse result = aspcloudant.savecheck(myCheck);
+					Console.WriteLine("sending check information with account type: " + myCheck.name);
+
+					UIAlertView alert = new UIAlertView();
+					alert.AddButton("OK");
+					alert.Title = "Authorization Response";
+
+					if (result.ok)
+					{
+						Console.WriteLine("Saved Check");
+						String authresp = "Saved Check";
+						alert.Message = authresp;
+						alert.Show();
+
 					}
-						else {
-							Console.WriteLine("Check Not Saved");
-						}
-					};
-				}
-			
+					else {
+						Console.WriteLine("Payment Processing Failed");
+						alert.Message = "Failed To Save Check";
+						alert.Show();
+					}
+				};
+			}
+
 
 		}
-    }
+	}
 }

@@ -78,24 +78,28 @@ namespace Sample
 		}
 
 
-		public static Boolean savecheck(Check thisCheck)
+		public static CloudantCreateResponse savecheck(Check thisCheck)
 		{
 
 			// client.Authenticator = new HttpBasicAuthenticator(username, password);
 			var request = new RestRequest("/savecheck", Method.POST);
 			Console.WriteLine("payee and desc is" + thisCheck.payee + ", " + thisCheck.desc);
-			request.AddParameter("payee", thisCheck.payee); // adds to POST or URL querystring based on Method
+			//request.AddParameter("payee", thisCheck.payee); // adds to POST or URL querystring based on Method
 													 //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
-			request.AddParameter("amount", thisCheck.amount);
-			request.AddParameter("account", thisCheck.name);
-			request.AddParameter("desc", thisCheck.desc);
-			request.AddParameter("date", thisCheck.date);
-			request.AddParameter("username", thisCheck.username);
+			//request.AddParameter("amount", thisCheck.amount);
+			//request.AddParameter("name", thisCheck.name);
+			//request.AddParameter("desc", thisCheck.desc);
+			//request.AddParameter("date", thisCheck.date);
+			//request.AddParameter("username", Globals.loggedinusername, ParameterType.QueryString);
+			//request.AddParameter("password", Globals.password, ParameterType.QueryString);
+			request.RequestFormat = DataFormat.Json;
+			request.AddBody(new { username = Globals.loggedinusername, password = Globals.password, check = thisCheck });
+			//request.AddHeader("Content-type", "application/json");
 
 			IRestResponse response = client.Execute(request);
-			var content = response.Content; // raw content as string
+			CloudantCreateResponse content = JsonConvert.DeserializeObject<CloudantCreateResponse>(response.Content); // raw content as string
 			Console.WriteLine("The response from server was: " + content);
-			return true;
+			return content;
 		}
 
 		public static ChecksResponse getchecks()

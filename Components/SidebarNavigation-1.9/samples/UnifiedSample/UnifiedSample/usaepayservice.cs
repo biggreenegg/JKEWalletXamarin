@@ -58,7 +58,7 @@ namespace Sample
 							 "transInvoice: " + RandomString(10) + "\n");
 
 			request.AddHeader("x-ibm-client-id", "d95b7289-f8b2-43e9-a7c4-da48294b64f1");
-			request.AddHeader("accept", "application/json");
+			request.AddHeader("Content-type", "application/json");
 			IRestResponse response = client.Execute(request);
 			Console.WriteLine("Response from server: " + Regex.Unescape(response.Content));
 			Auth content = JsonConvert.DeserializeObject<Auth>(Regex.Unescape(response.Content)); // raw content as string

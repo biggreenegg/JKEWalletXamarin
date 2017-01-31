@@ -1,11 +1,11 @@
 ﻿using System;
 namespace UnifiedSample
 {
-	public class ChecksResponse
+	public class CloudantCreateResponse
 	{
-		public string status;
-		public int totalchecks;
-		public Check[] checks;
+		public bool ok;
+		public string id;
+		public string rev;
 	}
 }
 
