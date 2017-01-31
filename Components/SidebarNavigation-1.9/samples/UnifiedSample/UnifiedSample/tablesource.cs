@@ -34,7 +34,7 @@ namespace UnifiedSample
 			}
 
 			cell.TextLabel.Text = item.desc + "     $" + item.amount;
-			cell.DetailTextLabel.Text = item.account;
+			cell.DetailTextLabel.Text = item.name;
 			cell.ImageView.Image = UIImage.FromFile("Images/charge.png"); // don't use for Value2
 			return cell;
 		}

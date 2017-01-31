@@ -78,6 +78,7 @@ namespace Sample
 			{
 			Globals.isloggedin = true;
 			Globals.loggedinusername = result.username;
+			Globals.password = password.Text;
 			SidebarController.ChangeContentView(new AccountsController());
 			}
 			else {

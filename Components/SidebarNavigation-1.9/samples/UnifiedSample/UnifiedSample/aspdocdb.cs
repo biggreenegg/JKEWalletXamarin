@@ -82,7 +82,7 @@ namespace Sample
 			request.AddParameter("payee", thisCheck.payee); // adds to POST or URL querystring based on Method
 													 //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
 			request.AddParameter("amount", thisCheck.amount);
-			request.AddParameter("account", thisCheck.account);
+			request.AddParameter("account", thisCheck.name);
 			request.AddParameter("desc", thisCheck.desc);
 			request.AddParameter("date", thisCheck.date);
 			request.AddParameter("username", thisCheck.username);

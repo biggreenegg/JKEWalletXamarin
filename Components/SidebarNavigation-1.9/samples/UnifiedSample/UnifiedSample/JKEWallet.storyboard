@@ -574,11 +574,6 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                     </variation>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Card Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="904" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                                    <rect key="frame" x="111" y="2" width="164" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint id="849" firstItem="848" firstAttribute="trailing" secondItem="833" secondAttribute="trailing" constant="-1"/>
@@ -810,7 +805,7 @@
                                                         <rect key="frame" x="20" y="0.0" width="81" height="44"/>
                                                     </variation>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="932" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right" placeholder="$0.00">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="932" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right" placeholder="$0.00" customClass="amountcharge">
                                                     <rect key="frame" x="278" y="0.0" width="97" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -869,7 +864,7 @@
                                                         <rect key="frame" x="20" y="0.0" width="81" height="44"/>
                                                     </variation>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="940" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="940" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right" customClass="transdesc">
                                                     <rect key="frame" x="133" y="0.0" width="242" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1086,6 +1081,8 @@
                         <outlet property="payeeentered" destination="819" id="name-outlet-819"/>
                         <outlet property="payeeswitcher" destination="837" id="name-outlet-837"/>
                         <outlet property="amountcharged" destination="932" id="name-outlet-932"/>
+                        <outlet property="transdesc" destination="940" id="name-outlet-940"/>
+                        <outlet property="codeentered" destination="910" id="name-outlet-910"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="902" userLabel="First Responder" sceneMemberID="firstResponder"/>

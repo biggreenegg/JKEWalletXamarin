@@ -20,7 +20,7 @@ namespace UnifiedSample
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField amountcharged { get; set; }
+        UnifiedSample.amountcharge amountcharged { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -29,6 +29,10 @@ namespace UnifiedSample
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIPickerView choosepayee { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UnifiedSample.codeentered codeentered { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -54,6 +58,10 @@ namespace UnifiedSample
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton sendpayment { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UnifiedSample.transdesc transdesc { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (amount != null) {
@@ -74,6 +82,11 @@ namespace UnifiedSample
             if (choosepayee != null) {
                 choosepayee.Dispose ();
                 choosepayee = null;
+            }
+
+            if (codeentered != null) {
+                codeentered.Dispose ();
+                codeentered = null;
             }
 
             if (date != null) {
@@ -104,6 +117,11 @@ namespace UnifiedSample
             if (sendpayment != null) {
                 sendpayment.Dispose ();
                 sendpayment = null;
+            }
+
+            if (transdesc != null) {
+                transdesc.Dispose ();
+                transdesc = null;
             }
         }
     }

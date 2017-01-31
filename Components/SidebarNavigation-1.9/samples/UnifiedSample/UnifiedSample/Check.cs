@@ -3,8 +3,8 @@ namespace UnifiedSample
 {
 	public class Check
 	{
-		public string amount { get; set; }
-		public string account { get; set; }
+		public decimal amount { get; set; }
+		public string name { get; set; }
 		public string desc { get; set; }
 		public string payee { get; set; }
 		public int date { get; set; }
